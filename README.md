@@ -4,7 +4,7 @@ This project is just an example to reproduce a case of bug or the expected behav
 # Description
 In the functions folder, there is a lambda function authCustomMessage, as its name suggests, allows you to customize the message that a user will receive when he registers. This lambda function is deployed and listed as a trigger for cognito in the stack definition in `lib/localstack-stack.ts`
 
-In the `test/register-user.ts` test file, there is the code that sends the request to cognito in order to register a user. In the information exists the ClientMetadata attribute. This attribute is supposed to be sent with its value, to the authCustomMessage lambda function as we can expect in a concrete case on [AWS](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SignUp.html#API_SignUp_RequestParameters).
+In the `test/register-user.ts` test file, there, is the code that sends the request to cognito in order to register a user. In the provided cognito information, exists the ClientMetadata attribute. This attribute is supposed to be sent with its value, to the authCustomMessage lambda function as we can expect in a concrete case on [AWS](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SignUp.html#API_SignUp_RequestParameters).
 
 # Problem
 When calling the signUp method on cognitoIdentityServiceProvider, the lambda functions/authCustomMessage function is called but the transmitted request data does not contain the expected value for the clientMetada attribute `"clientMetadata":{}`
